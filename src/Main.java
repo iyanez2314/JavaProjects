@@ -87,4 +87,13 @@ public class Main {
         Integer randomValue = new Random().nextInt(input.length);
         return randomValue;
     }
+    public static void chooseNextLevel(String input){
+        Scanner scanner = new Scanner(System.in);
+        System.out.printf("Congrats on finishing stage %s would you like to continue? y/n", input);
+        String userResponse = scanner.nextLine();
+        if(Objects.equals(userResponse, "y")){
+            stageTwo();
+        } 
+
+    }
 }
