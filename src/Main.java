@@ -46,6 +46,7 @@ public class Main {
            if(isTheFirstAnswerCorrect) {
                isAnswerCorrect = true;
                System.out.println("Congrats you won the game!");
+               chooseNextLevel("step one");
                break;
            }
            tries--;
@@ -55,6 +56,7 @@ public class Main {
            if(isTheSecondAnswerTrue){
                isAnswerCorrect = true;
                System.out.println("Congrats you won the game!");
+               chooseNextLevel("step one");
                break;
            }
 
@@ -65,6 +67,7 @@ public class Main {
            if(isTheFINALAnswerCorrect){
                isAnswerCorrect = true;
                System.out.println("Finally you won");
+               chooseNextLevel("step one");
                break;
            }
            tries--;
@@ -75,7 +78,7 @@ public class Main {
        }
     }
     public static void stageTwo(){
-
+        System.out.println("You are in step two");
     }
     public static void stageThree(){
 
@@ -89,11 +92,20 @@ public class Main {
     }
     public static void chooseNextLevel(String input){
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("Congrats on finishing stage %s would you like to continue? y/n", input);
-        String userResponse = scanner.nextLine();
-        if(Objects.equals(userResponse, "y")){
-            stageTwo();
-        } 
+        switch (input){
+            case "step one":
+                System.out.printf("Congrats on finishing %s would you like to continue? y/n", input);
+                String userResponse = scanner.nextLine();
+                if(Objects.equals(userResponse, "y")){
+                    stageTwo();
+                }
+                break;
+            default:
+                System.out.println("I broke");
+        }
+
+
+
 
     }
 }
