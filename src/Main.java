@@ -26,7 +26,7 @@ public class Main {
         }
     }
     public static void stageOne(String input){
-        Boolean isAnswerCorrect = false; // Will let us know if they entered the correct word
+        boolean isAnswerCorrect = false; // Will let us know if they entered the correct word
         Integer tries = 3; // Amount of tries the user has
         String correctWord = "pickle"; // The correct answer
         String[] hintsArray = {"It is green", "It enjoys its time in a jar", "Its crunchy"}; // The array of hints the user has
@@ -38,10 +38,10 @@ public class Main {
             exitGame(input);
         }
         System.out.println("Alrighty let's begin!");
-        Integer returnValueFromRandomFunction = getRandomItem(hintsArray);
+        int returnValueFromRandomFunction = getRandomItem(hintsArray);
         System.out.printf("Your first hint is %s: ", hintsArray[returnValueFromRandomFunction]);
         String firstAnswer = scanner.nextLine().toLowerCase();
-        Boolean isTheFirstAnswerCorrect = Objects.equals(correctWord, firstAnswer);
+        boolean isTheFirstAnswerCorrect = Objects.equals(correctWord, firstAnswer);
        while (!isAnswerCorrect){
            if(isTheFirstAnswerCorrect) {
                isAnswerCorrect = true;
@@ -52,7 +52,7 @@ public class Main {
            tries--;
            System.out.printf("OOF you have %s tries left your next hint is %s", tries, hintsArray[returnValueFromRandomFunction]);
            String secondTry = scanner.nextLine().toLowerCase();
-           Boolean isTheSecondAnswerTrue = Objects.equals(correctWord, secondTry);
+           boolean isTheSecondAnswerTrue = Objects.equals(correctWord, secondTry);
            if(isTheSecondAnswerTrue){
                isAnswerCorrect = true;
                System.out.println("Congrats you won the game!");
@@ -63,7 +63,7 @@ public class Main {
            tries--;
            System.out.printf("bruh.. you have %s your next AND FINAL HINT IS %s", tries, hintsArray[returnValueFromRandomFunction]);
            String lastTry = scanner.nextLine().toLowerCase();
-           Boolean isTheFINALAnswerCorrect = Objects.equals(correctWord, lastTry);
+           boolean isTheFINALAnswerCorrect = Objects.equals(correctWord, lastTry);
            if(isTheFINALAnswerCorrect){
                isAnswerCorrect = true;
                System.out.println("Finally you won");
@@ -78,7 +78,14 @@ public class Main {
        }
     }
     public static void stageTwo(){
-        System.out.println("You are in step two");
+        Scanner scanner = new Scanner(System.in);
+        int tries = 2;
+        String correctWord = "sponge bob square pants"; // The correct answer
+        String[] hintsArray = {"hes yellow with a lot of holes in him", "he lives in a pineapple under the sea", "his best friend is pink"};
+        System.out.printf("Welcome to stage two! Here are the rules in stage two you have %s tries and you will still hints", tries);
+        System.out.println("Are you ready for the stage? y/n ");
+        String userInput = scanner.nextLine().toLowerCase();
+        
     }
     public static void stageThree(){
 
@@ -87,7 +94,7 @@ public class Main {
         System.out.printf("Bye %s", input);
     }
     public static int getRandomItem(String[] input){
-        Integer randomValue = new Random().nextInt(input.length);
+        int randomValue = new Random().nextInt(input.length);
         return randomValue;
     }
     public static void chooseNextLevel(String input){
@@ -103,9 +110,6 @@ public class Main {
             default:
                 System.out.println("I broke");
         }
-
-
-
 
     }
 }
