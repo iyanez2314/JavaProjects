@@ -79,19 +79,38 @@ public class Main {
     }
     public static void stageTwo(){
         Scanner scanner = new Scanner(System.in);
+        Boolean isCorrect = false;
         int tries = 2;
         String correctWord = "sponge bob square pants"; // The correct answer
         String[] hintsArray = {"hes yellow with a lot of holes in him", "he lives in a pineapple under the sea", "his best friend is pink"};
         System.out.printf("Welcome to stage two! Here are the rules in stage two you have %s tries and you will still hints", tries);
         System.out.println("Are you ready for the stage? y/n ");
         String userInput = scanner.nextLine().toLowerCase();
-        
+        if(Objects.equals(userInput, "n")){
+            exitGame();
+        }
+        System.out.println("Okay lets begin stage two!");
+        int randomItemInArray = getRandomItem(hintsArray);
+        System.out.printf("Your first hint is: %s", hintsArray[randomItemInArray]);
+        String userInputToFirstQuestion = scanner.nextLine().toLowerCase();
+        boolean isTheFirstAnswerCorrect = Objects.equals(correctWord, userInputToFirstQuestion);
+        while(!isCorrect){
+            if(isTheFirstAnswerCorrect){
+                isCorrect = true;
+                System.out.println("Congrats on guessing right! Would you like to continue? y/n: ");
+                chooseNextLevel("step two");
+            }
+        }
+
     }
     public static void stageThree(){
-
+        
     }
     public static void exitGame(String input){
         System.out.printf("Bye %s", input);
+    }
+    public static void exitGame(){
+        System.out.println("See ya!");
     }
     public static int getRandomItem(String[] input){
         int randomValue = new Random().nextInt(input.length);
@@ -106,6 +125,15 @@ public class Main {
                 if(Objects.equals(userResponse, "y")){
                     stageTwo();
                 }
+                // exitGame();
+                break;
+            case "step two":
+                System.out.printf("Congrats on finishing %s would you like to continue? y/n: ", input);
+                String userSecondResponse = scanner.nextLine();
+                if(Objects.equals(userSecondResponse, "y")){
+                    stageThree();
+                }
+                // exitGame();
                 break;
             default:
                 System.out.println("I broke");
