@@ -124,16 +124,18 @@ public class Main {
                 String userResponse = scanner.nextLine();
                 if(Objects.equals(userResponse, "y")){
                     stageTwo();
+                } else {
+                    exitGame();
                 }
-                // exitGame();
                 break;
             case "step two":
                 System.out.printf("Congrats on finishing %s would you like to continue? y/n: ", input);
                 String userSecondResponse = scanner.nextLine();
                 if(Objects.equals(userSecondResponse, "y")){
                     stageThree();
+                } else {
+                    exitGame();
                 }
-                // exitGame();
                 break;
             default:
                 System.out.println("I broke");
